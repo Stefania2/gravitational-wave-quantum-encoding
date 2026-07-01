@@ -2,6 +2,8 @@
 
 Quantum encoding of LIGO O4b gravitational wave strain data using Qiskit. Compares **amplitude encoding** and **angle encoding** strategies, demonstrating that amplitude encoding of GW strain collapses to the maximally mixed state while angle encoding preserves structure.
 
+https://stefania2.github.io/gravitational-wave-quantum-encoding/ 
+
 ## Files
 
 | File | Description |
