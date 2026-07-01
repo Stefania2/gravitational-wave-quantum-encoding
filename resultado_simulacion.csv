@@ -1,0 +1,37 @@
+Campo,Valor
+Nombre agente,observador
+Masa (kg),70.0
+Fraccion velocidad c,0.01
+Coherencia,0.75
+Tiempo base,11
+Salto base,5
+Indice logico efectivo,11
+Desplazamiento logico efectivo,12
+Periodo detectado (QFT),2
+Frecuencia dominante,3
+Interpretacion logica,bifurcacion logica
+Area analogica de informacion,3.134736e-69
+Entropia analogica de informacion,4.141947e-23
+Entropia de probabilidad,2.775980
+Distancia entre estados,1.032324
+Concentracion espectral,0.494624
+Qiskit usado,si
+
+Estado cuantico,Conteo,Probabilidad
+|00>,536,0.5234
+|11>,488,0.4766
+
+Evento,Probabilidad
+la semilla fue sembrada,0.154335
+la raiz busco agua,0.113287
+el tallo encontro luz,0.026598
+la flor se abrio,0.192745
+el fruto guardo memoria,0.078035
+la semilla cayo otra vez,0.067026
+la tierra recordo el ciclo,0.113287
+el comienzo regreso,0.254687
+
+Rama logica dominante,Probabilidad
+el comienzo regreso,0.254687
+la flor se abrio,0.192745
+la semilla fue sembrada,0.154335

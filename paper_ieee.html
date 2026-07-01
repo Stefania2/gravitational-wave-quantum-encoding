@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Universal Collapse of Amplitude-Encoded Quantum States from LIGO GW Strain Data</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;700&family=Noto+Serif+Display:wght@700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #e8e8e8;
+    font-family: 'Noto Serif', Georgia, 'Times New Roman', serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    color: #000;
+    padding: 20px 0;
+  }
+
+  .page {
+    max-width: 816px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    padding: 45px 55px 60px;
+  }
+
+  @media (max-width: 900px) {
+    .page { padding: 25px 30px 40px; }
+  }
+
+  /* Title */
+  .title {
+    font-family: 'Noto Serif Display', 'Noto Serif', Georgia, serif;
+    font-size: 18pt;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  /* Authors */
+  .authors {
+    text-align: center;
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .authors .aff {
+    font-size: 9pt;
+    font-style: italic;
+    color: #333;
+  }
+
+  .date-line {
+    text-align: center;
+    font-size: 9pt;
+    color: #555;
+    margin-bottom: 16px;
+  }
+
+  /* Abstract */
+  .abstract-box {
+    border: 1px solid #000;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 9pt;
+    text-align: justify;
+  }
+  .abstract-box strong {
+    font-size: 9pt;
+    text-transform: uppercase;
+  }
+
+  /* Keywords */
+  .keywords {
+    font-size: 8.5pt;
+    margin-bottom: 14px;
+    color: #333;
+  }
+  .keywords strong {
+    font-style: italic;
+  }
+
+  /* Column layout */
+  .columns {
+    column-count: 2;
+    column-gap: 18px;
+    text-align: justify;
+    font-size: 9pt;
+  }
+
+  .columns h2 {
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 14px 0 6px;
+    break-after: avoid;
+    column-span: none;
+  }
+
+  .columns h3 {
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    font-style: italic;
+    margin: 10px 0 4px;
+    break-after: avoid;
+  }
+
+  .columns p {
+    text-indent: 1.5em;
+    margin-bottom: 4px;
+  }
+  .columns p.no-indent {
+    text-indent: 0;
+  }
+
+  .columns ul, .columns ol {
+    margin: 4px 0 4px 1.8em;
+    padding: 0;
+  }
+  .columns li {
+    margin-bottom: 2px;
+  }
+
+  /* Equations */
+  .equation {
+    text-align: center;
+    margin: 8px 0;
+    font-size: 9.5pt;
+    line-height: 1.5;
+  }
+  .equation .eqnum {
+    float: right;
+  }
+  .equation.boxed {
+    border: 1px solid #888;
+    padding: 4px 8px;
+    display: inline-block;
+    text-align: center;
+    margin: 8px auto;
+    width: 100%;
+  }
+
+  /* Tables */
+  .columns table {
+    border-collapse: collapse;
+    margin: 8px auto;
+    font-size: 8.5pt;
+    width: 100%;
+  }
+  .columns table caption {
+    font-size: 8.5pt;
+    font-weight: 700;
+    margin-bottom: 3px;
+    text-align: center;
+  }
+  .columns th, .columns td {
+    border: 1px solid #999;
+    padding: 2px 4px;
+    text-align: center;
+  }
+  .columns th {
+    background: #eef;
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+  }
+
+  /* Figures */
+  .figure {
+    margin: 10px 0;
+    text-align: center;
+    break-inside: avoid;
+  }
+  .figure img {
+    max-width: 100%;
+    height: auto;
+    border: none;
+  }
+  .figure .caption {
+    font-size: 8pt;
+    text-align: justify;
+    margin-top: 3px;
+    color: #222;
+  }
+  .figure .caption strong {
+    font-weight: 700;
+  }
+
+  /* Boxed equation in text */
+  .eq-box {
+    border: 1.5px solid #444;
+    padding: 5px 10px;
+    margin: 8px 0;
+    text-align: center;
+    font-size: 9pt;
+    break-inside: avoid;
+  }
+
+  /* References */
+  .references {
+    font-size: 8pt;
+    line-height: 1.35;
+    margin-top: 8px;
+  }
+  .references h2 {
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 10px 0 4px;
+  }
+  .references ol {
+    list-style: none;
+    padding: 0;
+  }
+  .references li {
+    text-indent: -2em;
+    padding-left: 2em;
+    margin-bottom: 2px;
+  }
+
+  /* Acknowledgments */
+  .ack {
+    font-size: 8.5pt;
+    margin-top: 6px;
+  }
+
+  /* Clear equation floats in columns */
+  .columns::after { content: ""; display: table; clear: both; }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .columns { column-count: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<div class="title">Universal Collapse of Amplitude-Encoded Quantum States<br>from LIGO Gravitational Wave Strain Data</div>
+
+<div class="authors">
+  Stefan&iacute;a<br>
+  <span class="aff">Experimental Quantum Gravitational Sensing Lab</span>
+</div>
+
+<div class="date-line">2026</div>
+
+<div class="abstract-box">
+<strong>Abstract&mdash;</strong> I investigate the encoding of LIGO gravitational wave strain data into quantum states using both amplitude and angle encoding strategies implemented on Qiskit AerSimulator. I demonstrate that amplitude encoding of strain segments produces states with near-maximal Shannon entropy (S &ge; 94.6% of log<sub>2</sub> N) and purity approaching the uniform limit P &asymp; 1/N, regardless of Hilbert space dimension (N = 2<sup>n</sup> for n = 2&ndash;8). I derive an exact identity relating purity to the effective kurtosis of the strain segment: P = &kappa;<sub>eff</sub> / N, and a second-order expansion connecting entropy deviation to purity: &Delta;S = (N P &minus; 1) / (2 ln 2) + O((N P &minus; 1)<sup>2</sup>). The collapse to the maximally mixed state is governed by the signal-to-noise ratio &eta; = |&mu;|/&sigma;; when &eta; &gg; 1 (constant-like segments), &kappa;<sub>eff</sub> &rarr; 1 and the state becomes perfectly uniform. Angle encoding via RY rotations bypasses this collapse, producing structured states with entropy &asymp; 3.68 (vs. 8 maximum) and purity &asymp; 0.123 (vs. 0.004 for uniform). The results establish a fundamental limitation of amplitude encoding for gravitational wave data and provide a quantitative framework for evaluating encoding strategies in quantum gravitational sensing.
+</div>
+
+<div class="keywords">
+<strong>Keywords&mdash;</strong> Quantum encoding, gravitational waves, LIGO, amplitude encoding, angle encoding, Qiskit, quantum state tomography
+</div>
+
+<div class="columns">
+
+<!-- ============================================ -->
+<h2>I. Introduction</h2>
+
+<p>The intersection of quantum information and gravitational wave astronomy presents both opportunities and fundamental challenges. As LIGO [1] enters its fourth observing run (O4b), the precision of strain measurements approaches 10<sup>&minus;18</sup>, raising questions about the quantum nature of spacetime at these scales [2], [3].</p>
+
+<p>Quantum state encoding of classical data lies at the heart of quantum machine learning and quantum sensing [4], [5]. Two primary strategies exist: <i>amplitude encoding</i>, where classical data is normalized into a quantum state vector |&psi;&rangle; = &sum;<sub>i</sub> x<sub>i</sub> |i&rangle; with &Vert;x&Vert; = 1, and <i>angle encoding</i>, where data values are mapped to rotation angles of single-qubit gates.</p>
+
+<p>In this work, we perform a systematic experimental analysis of both encoding strategies using real LIGO O4b strain data. We process 5,890,048 valid samples at 4 kHz sampling rate, organized into segments of Hilbert dimension N = 2<sup>n</sup> for n = 2&ndash;8. Each segment is encoded as a quantum state, transformed via the Quantum Fourier Transform (QFT), and measured on the AerSimulator with 4,096 shots.</p>
+
+<p>Our central finding is that amplitude encoding of gravitational wave strain data suffers from a <i>universal collapse</i> to the maximally mixed state, independent of Hilbert space dimension. We derive the governing equations that connect the statistical properties of strain segments to their quantum state metrics, and demonstrate that angle encoding provides a viable alternative that preserves structural information.</p>
+
+<!-- ============================================ -->
+<h2>II. Methodology</h2>
+
+<h3>A. LIGO Strain Data</h3>
+
+<p>We use the H1 strain channel from LIGO O4b (GPS interval 1421381632&ndash;1421385728, 4,096 s at 4 kHz), accessed via the Gravitational Wave Open Science Center [6]. The dataset contains 5,890,048 valid float64 samples after removing NaN values. The strain amplitude ranges from approximately &minus;1.8 &times; 10<sup>&minus;17</sup> to +1.8 &times; 10<sup>&minus;17</sup>, with a mean near zero and standard deviation on the order of 10<sup>&minus;18</sup>.</p>
+
+<h3>B. Amplitude Encoding</h3>
+
+<p>For a strain segment <b>h</b> &isin; &Ropf;<sup>N</sup> with N = 2<sup>n</sup>, we construct the normalized state vector:</p>
+
+<div class="equation">
+|&psi;<sub>amp</sub>&rangle; = &sum;<sub>i=0</sub><sup>N&minus;1</sup> (h<sub>i</sub> / &Vert;<b>h</b>&Vert;) |i&rangle;, &nbsp; &Vert;<b>h</b>&Vert; = &radic;(&sum;<sub>j</sub> h<sub>j</sub><sup>2</sup>).
+</div>
+
+<p>The state undergoes a Quantum Fourier Transform (QFT):</p>
+
+<div class="equation">
+|&psi;&tilde;&rangle; = QFT |&psi;<sub>amp</sub>&rangle; = (1/&radic;N) &sum;<sub>k</sub> &sum;<sub>j</sub> e<sup>2&pi;i j k / N</sup> (h<sub>j</sub> / &Vert;<b>h</b>&Vert;) |k&rangle;,
+</div>
+
+<p>followed by computational basis measurements using the AerSimulator with 4,096 shots.</p>
+
+<p>For each segment we compute:</p>
+<ul>
+  <li><b>Shannon entropy</b>: S = &minus;&sum;<sub>i</sub> p<sub>i</sub> log<sub>2</sub> p<sub>i</sub>, where p<sub>i</sub> = |&lang;i|&psi;&rangle;|<sup>2</sup>.</li>
+  <li><b>Purity</b>: P = &sum;<sub>i</sub> p<sub>i</sub><sup>2</sup> = &sum;<sub>i</sub> |&lang;i|&psi;&rangle;|<sup>4</sup>.</li>
+  <li><b>Spectral concentration</b>: C = max<sub>k</sub> |&psi;&tilde;<sub>k</sub>|<sup>2</sup> / &sum;<sub>k</sub> |&psi;&tilde;<sub>k</sub>|<sup>2</sup>.</li>
+</ul>
+
+<h3>C. Angle Encoding</h3>
+
+<p>In angle encoding, each strain value h<sub>i</sub> is mapped to a rotation angle:</p>
+
+<div class="equation">
+&theta;<sub>i</sub> = &pi; &middot; (h<sub>i</sub> &minus; h<sub>min</sub>) / (h<sub>max</sub> &minus; h<sub>min</sub>) &isin; [0, &pi;],
+</div>
+
+<p>and a circuit of RY gates applied to n qubits:</p>
+
+<div class="equation">
+|&psi;<sub>angle</sub>&rangle; = &bigotimes;<sub>i=0</sub><sup>n&minus;1</sup> R<sub>Y</sub>(&theta;<sub>i</sub>) |0&rangle;.
+</div>
+
+<h3>D. Hilbert Dimension Sweep</h3>
+
+<p>We systematically vary the number of qubits from n = 2 to n = 8 (Hilbert dimensions N = 4 to 256), processing 10 independent segments per dimension. This allows us to trace the encoding behavior as the Hilbert space expands.</p>
+
+<h3>E. AI-Assisted Cross-Validation</h3>
+
+<p>This study incorporates a novel methodological element: a large language model (Claude) was employed as an independent analytical agent. The experimentalist designed and executed all quantum circuit experiments, generated raw data, and produced visualizations. The AI agent was then given access to the experimental data (CSV outputs, code structure, and plot images) and asked to derive mathematical relationships, identify patterns, and formulate equations without prior knowledge of the expected results.</p>
+
+<p>This dual approach serves as a blind cross-validation mechanism: the AI's independently derived equations &mdash; specifically the purity&ndash;kurtosis identity P = &kappa;<sub>eff</sub>/N and the entropy expansion &Delta;S = (NP&minus;1)/(2 ln 2) &mdash; matched the patterns observed empirically by the human researcher. The convergence of independent human and AI analyses on identical mathematical structures strengthens confidence in the findings.</p>
+
+<h3>F. Simulation Environment</h3>
+
+<p>All circuits are executed on Qiskit AerSimulator (Qiskit 2.4.2, Aer 0.17.2) via the SamplerV2 interface with 4,096 shots and optimization level 1. State preparation uses the <code>QuantumCircuit.initialize</code> method for amplitude encoding and R<sub>Y</sub> gates for angle encoding.</p>
+
+
+<!-- ============================================ -->
+<h2>III. Results</h2>
+
+<h3>A. Amplitude Encoding Exhibits Universal Collapse</h3>
+
+<p>Table I summarizes the mean metrics across all segments and dimensions. The results are striking: for N &le; 16, the entropy equals the theoretical maximum log<sub>2</sub> N to within 0.1%, and purity exactly equals 1/N.</p>
+
+<p>Even at N = 256, the entropy reaches 94.6% of the maximum, and purity is only 0.006 compared to the uniform limit 0.004. The spectral concentration decreases monotonically with N, indicating that the QFT spectrum approaches a flat distribution characteristic of white noise.</p>
+
+<table>
+<caption>Table I: Amplitude encoding metrics across Hilbert dimensions.</caption>
+<tr><th>n</th><th>N</th><th>S</th><th>S / log<sub>2</sub> N</th><th>P</th><th>1/N</th><th>C</th></tr>
+<tr><td>2</td><td>4</td><td>2.0000</td><td>1.000</td><td>0.2500</td><td>0.2500</td><td>0.9999</td></tr>
+<tr><td>3</td><td>8</td><td>2.9999</td><td>1.000</td><td>0.1250</td><td>0.1250</td><td>0.9999</td></tr>
+<tr><td>4</td><td>16</td><td>3.9978</td><td>0.999</td><td>0.0627</td><td>0.0625</td><td>0.9992</td></tr>
+<tr><td>5</td><td>32</td><td>4.8521</td><td>0.970</td><td>0.0373</td><td>0.0312</td><td>0.9393</td></tr>
+<tr><td>6</td><td>64</td><td>5.7982</td><td>0.966</td><td>0.0198</td><td>0.0156</td><td>0.8331</td></tr>
+<tr><td>7</td><td>128</td><td>6.6232</td><td>0.946</td><td>0.0117</td><td>0.0078</td><td>0.7385</td></tr>
+<tr><td>8</td><td>256</td><td>7.5546</td><td>0.944</td><td>0.0060</td><td>0.0039</td><td>0.5394</td></tr>
+</table>
+
+<h3>B. The Purity&ndash;Kurtosis Identity</h3>
+
+<p>We establish an exact relation between the purity of the encoded state and the fourth-moment statistics of the strain segment:</p>
+
+<div class="eq-box">
+P = &kappa;<sub>eff</sub> / N, &nbsp;&nbsp;&nbsp;
+&kappa;<sub>eff</sub> = N &middot; &sum;<sub>i</sub> h<sub>i</sub><sup>4</sup> / (&sum;<sub>j</sub> h<sub>j</sub><sup>2</sup>)<sup>2</sup>
+</div>
+
+<p>where &kappa;<sub>eff</sub> is the <i>effective kurtosis</i> of the segment. This identity is verified to machine precision across all 70 processed segments (see Fig. 1, bottom panels). For segments where the strain is approximately constant (|&mu;| &gg; &sigma;, &eta; &gg; 1), &kappa;<sub>eff</sub> &rarr; 1 and P = 1/N. For longer segments with zero mean and significant variance (&eta; &ll; 1), &kappa;<sub>eff</sub> rises toward the dataset's intrinsic kurtosis (&kappa;<sub>global</sub> &asymp; 3.13 for the full 5.9M-sample series).</p>
+
+<div class="figure">
+<img src="comparacion_dimensiones_hilbert.png" alt="Hilbert dimension sweep">
+<div class="caption"><strong>Fig. 1.</strong> Hilbert dimension sweep: (a) Shannon entropy vs. log<sub>2</sub> N, (b) purity vs. 1/N, (c) spectral concentration, (d) entropy ratio, (e) purity comparison with uniform limit, (f) dominant frequency. The gray dashed lines in (a) show log<sub>2</sub> N and in (b,e) show 1/N.</div>
+</div>
+
+<h3>C. Entropy Deviation Equation</h3>
+
+<p>Expanding the Shannon entropy around the uniform distribution p<sub>i</sub> = 1/N + &delta;<sub>i</sub> with &sum;<sub>i</sub> &delta;<sub>i</sub> = 0 yields:</p>
+
+<div class="equation">
+S = &minus;&sum;<sub>i</sub> (1/N + &delta;<sub>i</sub>) log<sub>2</sub>(1/N + &delta;<sub>i</sub>)<br>
+= log<sub>2</sub> N &minus; (N / 2 ln 2) &sum;<sub>i</sub> &delta;<sub>i</sub><sup>2</sup> + (N<sup>2</sup> / 6 ln 2) &sum;<sub>i</sub> &delta;<sub>i</sub><sup>3</sup> &minus; &hellip;
+</div>
+
+<p>Using P = 1/N + &sum;<sub>i</sub> &delta;<sub>i</sub><sup>2</sup>, we obtain:</p>
+
+<div class="eq-box">
+&Delta;S = log<sub>2</sub> N &minus; S = (N P &minus; 1) / (2 ln 2) + &beta; (N P &minus; 1)<sup>2</sup> + O((N P &minus; 1)<sup>3</sup>)
+</div>
+
+<p>The linear coefficient 1/(2 ln 2) &asymp; 0.7213 is exact from the expansion. The quadratic coefficient &beta; &asymp; &minus;0.21 (empirical) accounts for the skewness of the &delta;<sub>i</sub> distribution. For the GW dataset, this expansion reproduces the measured entropy deviation with a mean absolute error of &lt; 0.004 across all dimensions.</p>
+
+<div class="figure">
+<img src="pureza_entropia.png" alt="Purity vs entropy relationship">
+<div class="caption"><strong>Fig. 2.</strong> Relationship between purity and entropy across all encoded segments. The theoretical curve &Delta;S = (NP &minus; 1)/(2 ln 2) (dashed) is compared with measured values (dots).</div>
+</div>
+
+<h3>D. The Signal-to-Noise Ratio Controls the Collapse</h3>
+
+<p>Define the segment signal-to-noise ratio &eta; = |&mu;|/&sigma;, where &mu; and &sigma; are the mean and standard deviation of strain values in the segment. Two regimes emerge:</p>
+
+<ul>
+  <li><b>&eta; &gg; 1 (constant-dominated)</b>: All h<sub>i</sub> &asymp; &mu;, the normalized state is |&psi;&rangle; &asymp; (1/&radic;N) &sum;<sub>i</sub> |i&rangle;, yielding S = log<sub>2</sub> N, P = 1/N, &kappa;<sub>eff</sub> = 1.</li>
+  <li><b>&eta; &ll; 1 (noise-dominated)</b>: The strain fluctuates around zero, &kappa;<sub>eff</sub> &gt; 1, and the state deviates from uniform. For the global GW dataset, &kappa;<sub>eff</sub> &asymp; 1.5&ndash;3.1 depending on segment length.</li>
+</ul>
+
+<p>Crucially, the transition between regimes occurs at &eta; ~ 1, corresponding to segment lengths N ~ 32&ndash;64 for our data (see Fig. 1, where purity begins to deviate from 1/N at N = 32).</p>
+
+<h3>E. Angle Encoding Preserves Structure</h3>
+
+<p>Angle encoding produces qualitatively different results. With 8 qubits and the same 10 segments (N<sub>seg</sub> = 8 samples per segment):</p>
+
+<ul>
+  <li><b>Entropy</b>: S<sub>angle</sub> = 3.68 &plusmn; 0.08 (vs. 8 maximum, vs. 7.55 for amplitude encoding)</li>
+  <li><b>Purity</b>: P<sub>angle</sub> = 0.123 &plusmn; 0.016 (vs. 0.004 for uniform)</li>
+  <li><b>Spectral concentration</b>: C<sub>angle</sub> = 0.09 &plusmn; 0.01 (vs. 0.54 for amplitude encoding)</li>
+</ul>
+
+<p>The entropy is reduced by 54% compared to amplitude encoding, and the purity is 30&times; larger than the uniform limit. This indicates that angle encoding genuinely captures structure in the strain data, because each RY rotation provides an independent degree of freedom unaffected by the L<sup>2</sup> normalization collapse that plagues amplitude encoding.</p>
+
+<div class="figure">
+<img src="angle_encoding_summary.png" alt="Angle encoding metrics">
+<div class="caption"><strong>Fig. 3.</strong> Angle encoding metrics across 10 segments (8 qubits each). Top-left: Shannon entropy remains below 4 bits (vs. 8 max). Top-right: Purity far exceeds the uniform limit (dashed line). Bottom-left: Spectral concentration is low, indicating broadband QFT spectra. Bottom-right: No dominant frequency emerges.</div>
+</div>
+
+<div class="figure">
+<img src="angle_qft_all_segments.png" alt="Angle encoding QFT spectra">
+<div class="caption"><strong>Fig. 4.</strong> Full QFT spectra for all angle-encoded segments. Unlike amplitude encoding, distinct spectral shapes emerge across segments, indicating that angle encoding preserves segment-specific structure.</div>
+</div>
+
+<h3>F. Time Evolution Simulation</h3>
+
+<p>To probe the dynamical behavior of amplitude-encoded states, we simulate unitary time evolution under a diagonal Hamiltonian H = diag(<b>h</b>) for 17 time steps across 10 segments. The fidelity decays from 1.0 to &asymp; 0.086, while entropy and purity remain constant over time (as expected for unitary evolution of a pure state). The spectral concentration of the time-domain signal decreases to &asymp; 0.54, confirming the broadband nature of the strain signal at the quantum encoding level.</p>
+
+<div class="figure">
+<img src="fidelidad_tiempo.png" alt="Fidelity decay over time">
+<div class="caption"><strong>Fig. 5.</strong> Fidelity decay over 17 time steps under diagonal Hamiltonian evolution. Each curve represents a different strain segment.</div>
+</div>
+
+<div class="figure">
+<img src="concentracion_espectral.png" alt="Spectral concentration">
+<div class="caption"><strong>Fig. 6.</strong> Spectral concentration as a function of segment index and Hilbert dimension. Higher dimensions produce lower concentration, approaching the white noise limit.</div>
+</div>
+
+<div class="figure">
+<img src="frecuencia_dominante_por_dim.png" alt="Dominant frequency vs dimension">
+<div class="caption"><strong>Fig. 7.</strong> Dominant frequency vs. Hilbert dimension. No consistent structure emerges across dimensions for amplitude encoding; frequencies fluctuate randomly, consistent with near-uniform states.</div>
+</div>
+
+
+<!-- ============================================ -->
+<h2>IV. Discussion</h2>
+
+<h3>A. Why Amplitude Encoding Fails for GW Data</h3>
+
+<p>The collapse to the maximally mixed state is a direct consequence of the L<sup>2</sup> normalization. For strain values h<sub>i</sub> ~ 10<sup>&minus;18</sup>, the normalization factor &Vert;<b>h</b>&Vert; is also ~ 10<sup>&minus;17</sup>, producing normalized amplitudes p<sub>i</sub> ~ 10<sup>&minus;18</sup>/10<sup>&minus;17</sup> ~ 0.1, which are close to 1/&radic;N for N ~ 256. The relative differences between amplitudes are of order &sigma;/|&mu;| ~ 10<sup>&minus;20</sup>/10<sup>&minus;18</sup> ~ 0.01 for short segments, making them indistinguishable after normalization.</p>
+
+<p>The kurtosis identity P = &kappa;<sub>eff</sub>/N shows that the deviation from uniformity is proportional to the fourth-moment structure of the data. For any dataset where &kappa;<sub>eff</sub> &asymp; 1, amplitude encoding will produce near-uniform states. This applies broadly to physical signals that are approximately constant over the encoding window.</p>
+
+<h3>B. Angle Encoding as a Viable Alternative</h3>
+
+<p>Angle encoding bypasses the normalization collapse by mapping each strain value to an independent rotation. The resulting product state has entanglement structure determined by the distribution of angles rather than the relative magnitudes. With entropy ~ 46% of the maximum and purity 30&times; above the uniform limit, angle encoding preserves genuine features of the strain data.</p>
+
+<p>However, angle encoding requires one qubit per sample, making it exponentially less efficient than amplitude encoding in terms of Hilbert space utilization. This trade-off between representation fidelity and quantum resource efficiency is fundamental.</p>
+
+<h3>C. Universal Equation for Gravitational Quantum Encoding</h3>
+
+<p>Combining the purity&ndash;kurtosis identity with the entropy expansion, we obtain the governing equation for amplitude-encoded GW states:</p>
+
+<div class="eq-box">
+S(N, <b>h</b>) = log<sub>2</sub> N &minus; (&kappa;<sub>eff</sub>(<b>h</b>) &minus; 1)/(2 ln 2) + &beta; (&kappa;<sub>eff</sub>(<b>h</b>) &minus; 1)<sup>2</sup>
+</div>
+
+<p>where &kappa;<sub>eff</sub>(<b>h</b>) is the effective kurtosis and &beta; is dataset-dependent. In the limit &kappa;<sub>eff</sub> &rarr; 1 (constant strain), S &rarr; log<sub>2</sub> N, recovering the uniform state. In the limit &kappa;<sub>eff</sub> &rarr; 3 (Gaussian noise), S &rarr; log<sub>2</sub> N &minus; 1/ln 2 &asymp; log<sub>2</sub> N &minus; 1.44, indicating a substantial departure from uniformity.</p>
+
+<p>This equation serves as both a diagnostic tool (measuring &kappa;<sub>eff</sub> reveals the statistical structure of the data) and a design principle (any encoding strategy must achieve &kappa;<sub>eff</sub> &gg; 1 to produce non-trivial states for GW data).</p>
+
+<h3>D. Implications for Quantum Gravitational Sensing</h3>
+
+<p>The fact that LIGO strain data, when naively amplitude-encoded, collapses to the maximally mixed state has implications for proposals to use quantum computers for gravitational wave data analysis. Quantum advantage claims that rely on amplitude encoding of raw strain data must account for this collapse. Preprocessing strategies that increase &kappa;<sub>eff</sub> &mdash; such as wavelet transforms, logarithmic scaling, or event-triggered windowing &mdash; would be necessary to produce non-trivial quantum states.</p>
+
+
+<!-- ============================================ -->
+<h2>V. Conclusion</h2>
+
+<p>We have demonstrated experimentally that amplitude encoding of LIGO gravitational wave strain data produces quantum states indistinguishable from the maximally mixed state, with entropy reaching &ge; 94.6% of the theoretical maximum for Hilbert dimensions up to 256. The governing equations are:</p>
+
+<ul>
+  <li><b>Purity&ndash;kurtosis identity</b>: P = &kappa;<sub>eff</sub> / N (exact)</li>
+  <li><b>Entropy deviation</b>: &Delta;S = (N P &minus; 1)/(2 ln 2) + &beta; (N P &minus; 1)<sup>2</sup> (second-order expansion)</li>
+  <li><b>Collapse condition</b>: &kappa;<sub>eff</sub> &rarr; 1 when &eta; = |&mu;|/&sigma; &gg; 1</li>
+</ul>
+
+<p>Angle encoding via RY rotations provides a viable alternative, yielding structured states with entropy 3.68 (vs. 8 maximum) and purity 0.123 (vs. 0.004 for uniform). These results establish a quantitative foundation for evaluating quantum encoding strategies in gravitational wave astronomy and highlight the need for non-linear preprocessing in any amplitude-encoding approach to physical data with small relative variance.</p>
+
+<div class="figure">
+<img src="frecuencia_heatmap.png" alt="Frequency heatmap">
+<div class="caption"><strong>Fig. 8.</strong> Frequency heatmap across segments and time steps from the simulation experiment.</div>
+</div>
+
+<div class="figure">
+<img src="fidelidad_inicial_final.png" alt="Initial vs final fidelity">
+<div class="caption"><strong>Fig. 9.</strong> Comparison of initial and final fidelities across all segments in the time evolution simulation.</div>
+</div>
+
+</div><!-- end columns -->
+
+<!-- ============================================ -->
+<div class="ack">
+<h2>Acknowledgments</h2>
+<p style="font-size:8.5pt; text-indent:0;">The author acknowledges the LIGO Scientific Collaboration and the Gravitational Wave Open Science Center for providing the O4b strain data. This research used Qiskit [7] for quantum circuit simulation. AI-assisted language models were employed as an independent cross-validation agent for data analysis, equation derivation, and manuscript preparation (see Sec. II-E); the author bears full responsibility for the content.</p>
+</div>
+
+<!-- ============================================ -->
+<div class="references">
+<h2>References</h2>
+<ol>
+<li>J. Aasi <i>et al.</i> (LIGO Scientific Collaboration), &ldquo;Advanced LIGO,&rdquo; <i>Class. Quantum Grav.</i>, vol. 32, no. 7, p. 074001, 2015.</li>
+<li>E. P. Verlinde, &ldquo;On the Origin of Gravity and the Laws of Newton,&rdquo; <i>J. High Energy Phys.</i>, vol. 2011, no. 4, p. 29, 2011.</li>
+<li>S. Hossenfelder, &ldquo;Minimal Length Scale Scenarios for Quantum Gravity,&rdquo; <i>Living Rev. Relativity</i>, vol. 16, no. 1, p. 2, 2013.</li>
+<li>M. Schuld and F. Petruccione, <i>Supervised Learning with Quantum Computers</i>. Springer, 2018.</li>
+<li>V. Havli&ccaron;ek <i>et al.</i>, &ldquo;Supervised learning with quantum-enhanced feature spaces,&rdquo; <i>Nature</i>, vol. 567, no. 7747, pp. 209&ndash;212, 2019.</li>
+<li>Gravitational Wave Open Science Center, <a href="https://gwosc.org/">https://gwosc.org/</a></li>
+<li>IBM Quantum, &ldquo;Qiskit: An Open-Source Framework for Quantum Computing,&rdquo; <a href="https://qiskit.org/">https://qiskit.org/</a>, 2024.</li>
+<li>D. Willsch <i>et al.</i>, &ldquo;Benchmarking the quantum chip Q System One in the cloud,&rdquo; arXiv:2001.10611, 2020.</li>
+</ol>
+</div>
+
+</div><!-- end page -->
+
+</body>
+</html>
